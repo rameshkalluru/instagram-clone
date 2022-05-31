@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block contant%}
+    <div class="container p-1">
+    <ul class="nav justify-content-center p-2 ">
+      <li class="nav-item ">
+        <img src="{{profile.photo.url}}" width="22" height="22" class="rounded-circle" alt="..."style="width: 55px; height: 55px"/><br/>
+        <h5>{{user.username}}</h5>
+      <h6>{{profile.name}}</h6>
+        <p>{{profile.bio}}</p>
+        
+      </li>
+      <li class="nav-item px-4">
+        <h5>Followers</h5>
+        <h5>{{profile.followers.count}}</h5>
+      </li>
+      <li class="nav-item">
+        <h5>Following</h5>
+        <h5>{{profile.followings.count}}</h5>
+      </li>
+      
+    </ul>
+    <a href="{% url 'profile_all' % }">click</a>
+    </div>
+   
+{% endblock%}

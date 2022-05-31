@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+{% block contant %}
+<div class="container px-5">
+  <div class="flex flex-row p-1">
+  {% for i in object_list %}
+      <a href="#"><video class="video-fluid" width="260px" height="250px" controls >
+        <source src="{{i.reel.url}}">
+      </video></a>
+      
+      <a href="{% url 'update_reel' i.pk %}"  style="text-decoration: none;"><i class="fa-solid fa-pen-to-square text-dark"></i></a>
+      <a href="{% url 'delete_reel' i.pk %}"  style="text-decoration: none;"><i class="fa-solid fa-trash text-danger"></i></a>
+  {% endfor %} 
+  </div> 
+</div>
+
+  {% endblock %}
+   
+  
+  

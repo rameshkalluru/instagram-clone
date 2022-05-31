@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block contant%}
+        <div class="container">
+            <div class="card p-4 shadow mt-2  bg-info rounded" style="max-width:700px; height:600px;">
+                <form method="post"  enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input type="submit" class="btn btn-secondary">
+                </form>
+            </div>
+          
+        </div>
+{% endblock%}

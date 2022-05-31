@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block contant%}
+
+    <div class="container px-5">
+      <a href="{% url 'home' %}"><button type="button" class="btn-close" aria-label="Close"></button></a>
+      
+      <div class="card border-secondary shadow mt-2 bg-body rounded " style="max-width:800px; height:auto;">
+          <img src="{{post.image.url}}" alt="img" width="500px" height="600px" class=" card-img-top">
+          <div class="card-img-overlay">
+            <h4 class="card-title text-white "><a class="navbar-brand  " href="{% url 'Profile' %}" >
+              {% if user.profile %}
+              <img src="{{user.profile.photo.url}}" alt="" width="35" height="35" class="rounded-circle ">
+              {% else%}
+              <img src="https://pngimg.com/uploads/light/light_PNG14421.png" alt="" width="35" height="35" class="rounded-circle  ">
+              {% endif %}
+               
+             </a>
+              {{user.username}}
+            </h4>
+          </div>
+      </div>
+      <form action="{% url 'like_post' post.id %}" method="post">
+      {% csrf_token %}
+      {% if liked %}
+         <button type="submit" name="post_id", value="{{post.id}}", class="btn btn-danger btn-sm">unlike</button>-{{total_likes}}-likes
+      {% else %}
+         <button type="submit" name="post_id", value="{{post.id}}", class="btn btn-primary btn-sm">like</button>-{{total_likes}}-likes
+      {% endif %}
+     </form>
+     
+     
+    
+  
+{% endblock %}
+
+
+
+
+
+
+

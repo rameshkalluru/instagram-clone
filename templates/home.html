@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+{% block contant%}
+<div class="container px-5">
+    {% for i in object_list %}
+    <div class="card border-secondary shadow mt-2 bg-body rounded" style="max-width:700px; height:auto;">
+      <div class="card-header border-secondary">
+        <a href="{% url 'Profile' %}" style="text-decoration: none;" >
+          {% if user.profile %}
+          <img src="{{user.profile.photo.url}}" width="35" height="35" class="rounded-circle ">
+          {% else%}
+          <img src="https://pngimg.com/uploads/light/light_PNG14421.png" alt="" width="35" height="35" class="rounded-circle  ">
+          {% endif %}
+        </a>
+        <a class="text-dark" style="text-decoration: none;" href="{% url 'Profile' %}">{{user.username}}</a>
+        <div class="position-absolute top-0 end-0">
+        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+          <li><a class="dropdown-item " href="{% url 'post_update' i.pk %}">update</a></li>
+          <li><a class="dropdown-item" href="{% url 'post_delete' i.pk %}">delete</a></li>
+        </ul>
+        </div>
+      </div>
+        <a href="{% url 'detail' i.pk %}"><img src="{{i.image.url}}" alt="img"  class="img-fluid"></a>
+      
+        <a href="{% url 'detail' i.id %}" style="text-decoration: none;" class="text-danger px-3"><i class="fa-solid fa-heart"></i></a>
+        <p  class=" px-3">{{i.caption}}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+

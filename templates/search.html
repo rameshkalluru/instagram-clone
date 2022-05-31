@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block contant%}
+     
+         {% for profile in profiles %} {% if user in profile.followers.all %}
+         <ul class="nav justify-content-center p-2 ">
+          <li class="nav-item ">
+            <img src="{{profile.photo.url}}" alt="" class="img-thumbnail" srcset="" width="75px" height="75px" />
+           
+            
+          </li>
+          <li class="nav-item px-5">
+            <a href="/profile/{{profile.id}}" style="text-decoration: none;"> <h4 >{{profile.user}}</h4></a>
+          
+          <li class="nav-item">
+            <a href="/follow/{{profile.id}}/{{username}}" class="text-center btn btn-danger text-dark" id="like">unfollow</a>
+      
+          </li>
+        </ul>
+
+          {% else %}
+          <ul class="nav justify-content-center p-2 "></ul>
+          <li class="nav-item ">
+            <img src="{{profile.photo.url}}" alt="" class="img-thumbnail" srcset=""  width="75px" height="75px" />
+          </li>
+          <li class="nav-item px-5">
+            <a href="/profile/{{profile.id}}" style="text-decoration: none;"> <h4>{{profile.user}}</h4></a></li>
+          
+          <li class="nav-item">
+            <a href="/follow/{{profile.id}}/{{username}}" class="text-center btn btn-danger text-dark" id="like">follow</a>
+      
+          </li>
+          
+      
+        {% endif %}
+         {% endfor %}
+{% endblock %}
